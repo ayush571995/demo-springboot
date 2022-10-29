@@ -20,16 +20,17 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: '8'
+          cache: 'gradle'
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew build --no-daemon
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.war'
+          path: '${{ github.workspace }}/build/libs*.jar'
 
   deploy:
     runs-on: ubuntu-latest
@@ -51,4 +52,4 @@ jobs:
           app-name: 'web-7uwx3j6n53exe'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D7DC739E00CC46C0BC67529AAA19A521 }}
-          package: '*.jar'
+          package: '${{ github.workspace }}/build/libs*.jar'
