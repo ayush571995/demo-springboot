@@ -52,4 +52,4 @@ jobs:
           app-name: 'web-7uwx3j6n53exe'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D7DC739E00CC46C0BC67529AAA19A521 }}
-          package: '${{ github.workspace }}/build/libs/*.jar'
+          package: '*.jar'
