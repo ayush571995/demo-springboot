@@ -49,7 +49,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'web-7uwx3j6n53exe'
+          app-name: 'my-webapp-java'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D7DC739E00CC46C0BC67529AAA19A521 }}
           package: '${{ github.workspace }}/demo-self-project-0.0.1-SNAPSHOT.jar'
