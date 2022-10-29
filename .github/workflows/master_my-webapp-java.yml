@@ -20,15 +20,17 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: '8'
+          cache: 'gradle'
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
 
-      - name: Build with Maven
-        run: mvn clean install
-
+      - name: Build with Gradle
+        run: ./gradlew build --no-daemon
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: '${{ github.workspace }}/build/libs/demo-self-project-0.0.1-SNAPSHOT.jar'
 
   deploy:
     runs-on: ubuntu-latest
@@ -36,7 +38,7 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    
+
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
@@ -50,4 +52,4 @@ jobs:
           app-name: 'my-webapp-java'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E234671D3B764A47BFD99D4AD6CB1F2C }}
-          package: '*.jar'
+          package: '${{ github.workspace }}/demo-self-project-0.0.1-SNAPSHOT.jar'
