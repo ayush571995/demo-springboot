@@ -52,4 +52,4 @@ jobs:
           app-name: 'web-7uwx3j6n53exe'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D7DC739E00CC46C0BC67529AAA19A521 }}
-          package: 'java-app.jar'
+          package: '${{ github.workspace }}/build/libs/demo-self-project-0.0.1-SNAPSHOT.jar'
