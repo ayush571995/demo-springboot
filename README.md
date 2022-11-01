@@ -18,4 +18,7 @@ To setup the spring boot application on your local you just need to run
  docker-compose up
 ```
 
+The resource is deployed on azure App Service 
+you can access the api's with host : https://my-webapp-java.azurewebsites.net
+
 
