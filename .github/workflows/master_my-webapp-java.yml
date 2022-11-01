@@ -4,6 +4,7 @@
 name: Build and deploy JAR app to Azure Web App - my-webapp-java
 
 on:
+  pull_request:
   push:
     branches:
       - master
