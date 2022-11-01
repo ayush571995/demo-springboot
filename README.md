@@ -22,3 +22,5 @@ The resource is deployed on azure App Service
 you can access the api's with host : https://my-webapp-java.azurewebsites.net
 
 
+Link to postman collection : https://www.getpostman.com/collections/0d473f887fa30b212d31
+
