@@ -8,7 +8,7 @@ public class EmployeeTest {
     public void testEmployeeNameGetter()
     {
         EmployeeRequest employeeRequest = new EmployeeRequest("ayush", "sde-2");
-        Assert.isNull(employeeRequest.getName(), "name not null");
+        Assert.notNull(employeeRequest.getName(), "name not null");
     }
 
     @Test
